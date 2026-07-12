@@ -7,7 +7,7 @@
 ══════════════════════════════════════════ */
 
 // ── Wedding date target ────────────────────
-const WEDDING_DATE = new Date('2026-05-20T17:30:00+05:30');
+const WEDDING_DATE = new Date('2026-08-15T11:00:00+05:30');
 
 // ── DOM refs ───────────────────────────────
 const splash        = document.getElementById('splash');

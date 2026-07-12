@@ -47,14 +47,18 @@
 
 /* ── Design Tokens ───────────────────────── */
 :root {
-  --primary:      #780269;
-  --primary-dark: #5a0050;
-  --pink-light:   #ed94d5;
-  --pink-dark:    #fc72d7;
-  --text-dark:    #171717;
-  --text-body:    #516271;
-  --card-bg:      #f6f6f6;
-  --border:       #e3e3e3;
+  --primary:      #1f4d3d;
+  --primary-dark: #16362c;
+  --accent:       #b98f2f;
+  --accent-soft:  #e0c46e;
+  --teal:         #2b5d58;
+  --cream:        #f7eddc;
+  --cream-deep:   #efe0b8;
+  --text-dark:    #3a2a1d;
+  --text-body:    #5a4938;
+  --text-light:   #fff7e9;
+  --card-bg:      #f8f1e4;
+  --border:       #dccaa5;
 
   --font-serif:    'AppleGaramond', 'Apple Garamond', 'Cormorant Garamond', Garamond, Georgia, serif;
   --font-sans:     'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -76,7 +80,7 @@ html, body {
   overflow: hidden;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
-  background: #e8b4df;
+  background: var(--cream);
 }
 a { text-decoration: none; color: inherit; }
 button { border: none; background: none; cursor: pointer; font-family: inherit; }
@@ -116,7 +120,7 @@ img { display: block; }
   inset: 0;
   z-index: 0;
   /* Gradient fallback if image fails to load */
-  background: linear-gradient(160deg, #f5d5ef 0%, #e080cc 30%, #b840a8 60%, #780269 100%);
+  background: linear-gradient(160deg, #f7eddc 0%, #d6bc6e 30%, #2f6c59 60%, #183f35 100%);
 }
 .splash-bg-img {
   width: 100%;
@@ -128,9 +132,9 @@ img { display: block; }
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg,
-    rgba(220,130,210,0.06) 0%,
-    rgba(220,130,210,0.04) 60%,
-    rgba(200,100,190,0.12) 100%);
+    rgba(255,245,214,0.08) 0%,
+    rgba(255,245,214,0.04) 60%,
+    rgba(18,57,49,0.18) 100%);
 }
 
 /* ── Z-layer for all content ─────────────── */
@@ -225,7 +229,7 @@ img { display: block; }
   font-family: var(--font-sans);
   font-size: 12px;
   font-weight: 400;
-  color: #fff;
+  color: var(--cream-deep);
   text-align: center;
   line-height: 1.3;
 }
@@ -242,7 +246,7 @@ img { display: block; }
   font-family: var(--font-astonia);
   font-size: clamp(34px, 10.1vw, 40px);
   font-weight: 400;
-  color: #fff;
+  color: var(--text-light);
   text-align: center;
   line-height: 1.1;
   white-space: nowrap;
@@ -266,7 +270,7 @@ img { display: block; }
   position: absolute;
   width: 80px;
   height: 28px;
-  background: #f900a3;
+  background: var(--accent);
   border-radius: 3px;
   transform: rotate(-21deg);
 }
@@ -274,7 +278,7 @@ img { display: block; }
   position: relative;
   font-family: var(--font-comforter);
   font-size: clamp(38px, 11.2vw, 44px);
-  color: #fff;
+  color: var(--text-light);
   transform: rotate(-25deg);
   line-height: 1;
   white-space: nowrap;
@@ -290,7 +294,7 @@ img { display: block; }
   font-family: var(--font-astonia);
   font-size: clamp(34px, 10.1vw, 40px);
   font-weight: 400;
-  color: #fff;
+  color: var(--text-light);
   text-align: center;
   line-height: 1.1;
   white-space: nowrap;
@@ -318,7 +322,7 @@ img { display: block; }
   font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 500;
-  color: rgba(255,255,255,0.9);
+  color: var(--cream);
   letter-spacing: 0;
   line-height: 1;
 }
@@ -328,7 +332,7 @@ img { display: block; }
   height: 82px;
   border-radius: 6px;
   border: 1px solid rgba(255,255,255,0.8);
-  background: linear-gradient(180deg, var(--pink-light) 0%, var(--pink-dark) 100%);
+  background: linear-gradient(180deg, var(--accent-soft) 0%, var(--accent) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -349,7 +353,7 @@ img { display: block; }
   font-family: 'Sora', var(--font-sans);
   font-size: 28px;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-dark);
   letter-spacing: -0.03em;
   position: relative;
   z-index: 1;
@@ -358,7 +362,7 @@ img { display: block; }
   display: flex;
   align-items: center;
   padding-bottom: 35px;
-  color: rgba(255,255,255,0.65);
+  color: rgba(247,237,220,0.85);
   font-size: 18px;
   line-height: 1;
 }
@@ -377,7 +381,7 @@ img { display: block; }
   font-family: var(--font-sans);
   font-size: 13.5px;
   font-weight: 400;
-  color: var(--primary);
+  color: var(--cream);
   letter-spacing: -0.02em;
   line-height: 1.35;
 }
@@ -410,8 +414,8 @@ img { display: block; }
   inset: 0;
   border-radius: var(--radius-pill);
   background: linear-gradient(90deg,
-    rgba(120,2,105,0.35),
-    rgba(252,114,215,0.25));
+    rgba(31,77,61,0.35),
+    rgba(185,143,47,0.25));
   width: 0;
 }
 .swipe-thumb {
@@ -531,7 +535,7 @@ img { display: block; }
   overflow: hidden;
   flex-shrink: 0;
   /* Gradient fallback if image fails to load */
-  background: linear-gradient(160deg, #d490c4 0%, #a03898 50%, #780269 100%);
+  background: linear-gradient(160deg, #3e7a65 0%, #2d5f4f 50%, #183f35 100%);
 }
 .details-hero-bg {
   position: absolute;
@@ -546,8 +550,8 @@ img { display: block; }
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg,
-    rgba(180,80,160,0.05) 0%,
-    rgba(180,80,160,0.08) 100%);
+    rgba(255,239,195,0.08) 0%,
+    rgba(32,77,61,0.15) 100%);
 }
 
 /* Music pill on details page */
@@ -572,7 +576,7 @@ img { display: block; }
   font-family: var(--font-astonia);
   font-size: clamp(26px, 8.6vw, 34px);
   font-weight: 400;
-  color: #fff;
+  color: var(--text-light);
   text-align: center;
   line-height: 1.05;
   white-space: nowrap;
@@ -596,7 +600,7 @@ img { display: block; }
   position: absolute;
   width: 68px;
   height: 22px;
-  background: #f900a3;
+  background: var(--accent);
   border-radius: 3px;
   transform: rotate(-21deg);
 }
@@ -620,7 +624,7 @@ img { display: block; }
   font-family: var(--font-astonia);
   font-size: clamp(26px, 8.6vw, 34px);
   font-weight: 400;
-  color: #fff;
+  color: var(--text-light);
   text-align: center;
   line-height: 1.05;
   white-space: nowrap;
@@ -669,8 +673,8 @@ img { display: block; }
   gap: 5px;
   padding: 22px 20px 20px;
   margin: 10px 0 16px;
-  background: linear-gradient(160deg, rgba(120,2,105,0.04) 0%, #fff 55%);
-  border: 0.75px solid rgba(162,95,153,0.22);
+  background: linear-gradient(160deg, rgba(31,77,61,0.05) 0%, #fff 55%);
+  border: 0.75px solid rgba(31,77,61,0.16);
   border-radius: 18px;
   box-shadow: 0 8px 28px rgba(0,0,0,0.08), 0 2px 8px rgba(120,2,105,0.06);
   position: relative;
