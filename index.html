@@ -214,6 +214,19 @@
         </div>
       </div>
 
+      <div class="card-frame-section" aria-label="Wedding card preview">
+        <div class="card-frame">
+          <p class="frame-label">Wedding Card</p>
+          <p class="frame-language">മലയാളം</p>
+          <img src="assets/CardM.jpg" alt="Malayalam wedding card" class="frame-image download-image" data-download="assets/CardM.jpg" data-name="CardM.jpg" />
+        </div>
+        <div class="card-frame">
+          <p class="frame-label">Wedding Card</p>
+          <p class="frame-language">English</p>
+          <img src="assets/Wedding%20cardE.jpg" alt="English wedding card" class="frame-image download-image" data-download="assets/Wedding%20cardE.jpg" data-name="Wedding cardE.jpg" />
+        </div>
+      </div>
+
       <footer class="wedding-footer">
         <p>With love &amp; prayers</p>
         <p class="footer-names">Ajmal</p>
@@ -229,5 +242,19 @@
 
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script src="js/wedding.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.download-image').forEach((img) => {
+        img.addEventListener('click', () => {
+          const link = document.createElement('a');
+          link.href = img.dataset.download;
+          link.download = img.dataset.name || 'wedding-card.jpg';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
