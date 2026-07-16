@@ -214,7 +214,8 @@
       
 ``` </div>
       </div>
-
+.frame-image {display: block;width: 100%;/* ... rest of your styles */}
+.frame-image {aspect-ratio: 1 / 1; /* Adjust to your preferred ratio */object-fit: cover; /* Use 'cover' to fill the space if 'contain' leaves gaps*/}
       <div class="card-frame-section" aria-label="Wedding card preview">
         <div class="card-frame">
           <p class="frame-label">Wedding Card</p>
@@ -260,8 +261,3 @@
   </script>
 </body>
 </html>
-.frame-image {
-  display: block;
-  width: 100%;
-  /* ... rest of your styles */
-}
