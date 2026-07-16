@@ -1,82 +1,369 @@
-```html
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-<script src="js/wedding.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#1f4d3d" />
+  <title>miju </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comforter&family=Poppins:wght@300;400;500;600&family=Sora:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/wedding.css" />
+</head>
+<body>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.download-image').forEach((img) => {
-    img.addEventListener('click', () => {
-      const link = document.createElement('a');
-      link.href = img.dataset.download;
-      link.download = img.dataset.name || 'wedding-card.jpg';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+  <!-- ═══════════════════════════════════════
+       PAGE 1 — SPLASH / HERO
+  ═══════════════════════════════════════ -->
+  <section id="splash" class="page">
+
+    <div class="splash-bg">
+      <img src="assets/splash-bg.jpg" alt="" aria-hidden="true" class="splash-bg-img" />
+      <div class="splash-overlay"></div>
+    </div>
+
+    <!-- Music pill (top-right) -->
+    <button class="music-pill" id="musicPill" aria-label="Play Nikkah Nasheed">
+      <span class="music-pill-label">Nikkah nasheed</span>
+      <span class="music-pill-btn">
+        <i data-lucide="music-2" class="mp-icon icon-play" width="12" height="12"></i>
+        <i data-lucide="pause" class="mp-icon icon-pause" width="12" height="12"></i>
+      </span>
+    </button>
+
+    <!-- Bismillah calligraphy — Figma y=80, w=104 -->
+    <div class="bismillah splash-enter" style="--delay:0.15s">
+      <img src="assets/bismillah.svg" alt="Bismillah ir-Rahman ir-Raheem" class="bismillah-img" />
+    </div>
+
+    <!-- Malayalam title logo — Figma y=119, w=224, h=116 -->
+    <div class="splash-title-logo splash-enter" style="--delay:0.3s">
+      <img src="assets/malayalam-logo.svg" alt="" class="splash-title-img" />
+    </div>
+
+    <!-- Invite text — Figma y=268, Poppins 12px -->
+    <p class="splash-invite splash-enter" style="--delay:0.4s">
+      You are warmly invited to celebrate the wedding of
+    </p>
+
+    <!-- Groom name — Figma y=314, Astonia Regular ~40px -->
+    <div class="splash-groom splash-enter" style="--delay:0.5s">
+      <span>Misaj P M</span>
+    </div>
+    <!-- "weds" badge — Figma y≈381, Comforter on pink bar -->
+    <div class="splash-weds-wrap splash-enter" style="--delay:0.6s">
+      <div class="splash-weds-bar"></div>
+      <span class="splash-weds">weds</span>
+    </div>
+
+    <!-- Bride name — Figma y=437, Astonia Regular ~40px -->
+    <p class="splash-bride splash-enter" style="--delay:0.65s">Shinsin Salmiya</p>
+
+    <!-- Countdown timer — Figma y=526 -->
+    <div class="countdown splash-enter" id="countdown" style="--delay:0.8s">
+      <div class="count-unit">
+        <span class="count-label">Days</span>
+        <div class="count-box"><span id="cd-days">00</span></div>
+      </div>
+      <span class="count-sep">
+        <svg width="7" height="7" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3" fill="white" opacity="0.7"/></svg>
+      </span>
+      <div class="count-unit">
+        <span class="count-label">Hours</span>
+        <div class="count-box"><span id="cd-hours">00</span></div>
+      </div>
+      <span class="count-sep">
+        <svg width="7" height="7" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3" fill="white" opacity="0.7"/></svg>
+      </span>
+      <div class="count-unit">
+        <span class="count-label">Minutes</span>
+        <div class="count-box"><span id="cd-mins">00</span></div>
+      </div>
+      <span class="count-sep">
+        <svg width="7" height="7" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3" fill="white" opacity="0.7"/></svg>
+      </span>
+      <div class="count-unit">
+        <span class="count-label">Seconds</span>
+        <div class="count-box"><span id="cd-secs">00</span></div>
+      </div>
+    </div>
+
+    <!-- Date + venue — Figma y=646/666 -->
+    <div class="event-meta splash-enter" style="--delay:1s">
+      <p class="event-date">Saturday, 15 August 2026</p>
+      <p class="event-venue">Mythree Auditorium · Lunch 11:00 AM – 3:00 PM </p>
+    </div>
+
+    <!-- Swipe CTA -->
+    <div class="swipe-wrap splash-enter" style="--delay:1.2s">
+      <div class="swipe-track" id="swipeTrack" role="button" aria-label="Swipe right to confirm attendance">
+        <div class="swipe-thumb" id="swipeThumb">
+          <i data-lucide="chevron-right" width="28" height="28" style="color:#780269"></i>
+        </div>
+        <span class="swipe-label" id="swipeLabel">Yeah, I am attending</span>
+        <div class="swipe-fill" id="swipeFill"></div>
+      </div>
+    </div>
+
+    <!-- Floating petals -->
+    <div class="petals" aria-hidden="true">
+      <span class="petal" style="--x:10%;--delay:0s;--dur:6s"></span>
+      <span class="petal" style="--x:25%;--delay:1.5s;--dur:7s"></span>
+      <span class="petal" style="--x:50%;--delay:0.8s;--dur:8s"></span>
+      <span class="petal" style="--x:70%;--delay:2s;--dur:5.5s"></span>
+      <span class="petal" style="--x:85%;--delay:0.3s;--dur:7.5s"></span>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PAGE 2 — DETAILS
+  ═══════════════════════════════════════ -->
+  <section id="details" class="page page-details" aria-hidden="true">
+
+    <!-- Hero top -->
+    <div class="details-hero">
+      <img src= class="details-hero-bg" />
+      <div class="details-hero-overlay"></div>
+
+      <!-- Music pill -->
+      <button class="music-pill music-pill-details" id="musicPillDetails" aria-label="Toggle music">
+        <span class="music-pill-label">Nikkah nasheed</span>
+        <span class="music-pill-btn">
+          <i data-lucide="music-2" class="mp-icon icon-play" width="12" height="12"></i>
+          <i data-lucide="pause" class="mp-icon icon-pause" width="12" height="12"></i>
+        </span>
+      </button>
+
+      <!-- Groom name — Astonia Regular, centered -->
+      <div class="dh-groom">
+        <span>Misaj P M</span>      </div>
+      <!-- "weds" badge — same style as splash -->
+      <div class="dh-weds-wrap">
+        <div class="dh-weds-bar"></div>
+        <span class="dh-weds">weds</span>
+      </div>
+      <!-- Bride name — Astonia Regular, centered -->
+      <p class="dh-bride">Shinsin Salmiya</p>
+
+      <!-- Sparkle divider -->
+      <div class="dh-divider-row">
+        <div class="dh-divider-line"></div>
+        <span class="dh-sparkle-star">✦</span>
+        <div class="dh-divider-line"></div>
+      </div>
+    </div>
+
+    <!-- Scrollable content card -->
+    <div class="details-sheet">
+
+      <!-- Save the date card -->
+      <div class="save-date-card">
+        <div class="sdt-ornament">
+          <div class="sdt-line"></div>
+          <span class="sdt-sparkle">✦</span>
+          <div class="sdt-line"></div>
+        </div>
+        <p class="sdt-eyebrow">We invite everyone </p>
+        <p class="sdt-date">Saturday, 15 August 2026</p>
+        <p class="sdt-venue-hint">Mythree Auditorium · Lunch 11:00 AM – 3:00 PM IST</p>
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Misaj+%26+Shin+Sin+Wedding&dates=20260815T053000Z/20260815T093000Z&details=Lunch%20celebration%20from%2011:00%20AM%20to%203:00%20PM%20IST&location=https%3A%2F%2Fshare.google%2FAZmUuUq5CWwJIuMQO" target="_blank" class="sdt-cal-btn" rel="noopener">
+          <i data-lucide="calendar" width="15" height="15"></i>
+          Add to Calendar
+        </a>
+      </div>
+
+      <!-- ── Venue ── -->
+      <div class="card-section stagger-child">
+        <h2 class="section-heading">Venue</h2>
+        <div class="info-card venue-elegant">
+          <div class="venue-top">
+            <div class="venue-pin-circle">
+              <i data-lucide="map-pin" width="18" height="18"></i>
+            </div>
+            <div class="venue-text">
+              <h3 class="venue-name">Mythree Auditorium</h3>
+              <p class="venue-addr">Lunch celebration · 11:00 AM – 3:00 PM IST</p>
+            </div>
+          </div>
+          <div class="venue-sep"></div>
+          <div class="venue-time">
+            <i data-lucide="clock" width="14" height="14" style="color:#516271"></i>
+            <span>Saturday, 15 August 2026</span>
+          </div>
+          <a href="https://share.google/AZmUuUq5CWwJIuMQO" target="_blank" rel="noopener" class="directions-btn-full">
+            <i data-lucide="navigation" width="15" height="15"></i>
+            Get Directions
+          </a>
+        </div>
+      </div>
+
+      <!-- ── For Enquiry ── -->
+      <div class="card-section stagger-child">
+        <h2 class="section-heading">For Enquiry</h2>
+
+        <div class="info-card contact-full">
+          <div class="contact-meta">
+            <h3 class="contact-name">Musthafa PA (Father)</h3>
+            <p class="contact-role">Contact</p>
+            <a href="tel:+919847484476" class="contact-phone">+91 98474 84476</a>
+          </div>
+          <a href="tel:+919847484476" class="phone-btn primary" aria-label="Call Musthafa">
+            <i data-lucide="phone" width="20" height="20"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="card-frame-section" aria-label="Wedding card preview">
+        <div class="card-frame">
+          <p class="frame-label">Wedding Card</p>
+          <p class="frame-language">മലയാളം</p>
+          <img src="assets/CardM.jpg" alt="Malayalam wedding card" class="frame-image download-image" data-download="assets/CardM.jpg" data-name="CardM.jpg" />
+        </div>
+        <div class="card-frame">
+          <p class="frame-label">Wedding Card</p>
+          <p class="frame-language">English</p>
+          <img src="assets/Wedding%20cardE.jpg" alt="English wedding card" class="frame-image download-image" data-download="assets/Wedding%20cardE.jpg" data-name="Wedding cardE.jpg" />
+        </div>
+      </div>
+
+      <footer class="wedding-footer">
+        <p>With love &amp; prayers</p>
+        <p class="footer-names">Ajmal</p>
+      </footer>
+
+    </div><!-- /details-sheet -->
+  </section>
+
+  <!-- Background music — place the MP3 at wedding/audio/nikah-nasheed.mp3 -->
+  <audio id="bgMusic" loop preload="auto" playsinline webkit-playsinline>
+    <source src="audio/nikah-nasheed.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="js/wedding.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.download-image').forEach((img) => {
+        img.addEventListener('click', () => {
+          const link = document.createElement('a');
+          link.href = img.dataset.download;
+          link.download = img.dataset.name || 'wedding-card.jpg';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      });
     });
-  });
-});
-</script>
+    ```css
 
-</body>
-</html>
-```
-
----
-
-### Then move this CSS into **`css/wedding.css`** (not inside HTML):
-
-```css
 .card-frame-section {
+
     display: flex;
+
     justify-content: center;
+
     gap: 12px;
+
     flex-wrap: wrap;
+
     margin: 20px 0;
+
 }
+
+
 
 .card-frame {
-    width: 170px;
+
+    width: 170px;          /* Smaller frame */
+
     padding: 10px;
+
     border: 1px solid #ddd;
+
     border-radius: 12px;
+
     background: #fff;
+
     text-align: center;
+
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
 }
+
+
 
 .frame-image {
+
     width: 100%;
+
     height: auto;
+
     border-radius: 8px;
+
     cursor: pointer;
+
 }
+
+
 
 /* Mobile */
+
 @media (max-width: 768px) {
+
     .card-frame-section {
+
         gap: 10px;
+
     }
+
+
 
     .card-frame {
-        width: 145px;
+
+        width: 145px;   /* Small but still clearly visible */
+
     }
 
+
+
     .frame-label,
+
     .frame-language {
+
         font-size: 14px;
+
     }
+
 }
+
+
 
 /* Very small phones */
+
 @media (max-width: 400px) {
+
     .card-frame {
+
         width: 130px;
+
     }
+
+
 
     .frame-label,
-    .frame-language {
-        font-size: 13px;
-    }
-}
-```
 
+    .frame-language {
+
+        font-size: 13px;
+
+    }
+
+}
+
+```
+```css
+
+  </script>
+</body>
+</html>
