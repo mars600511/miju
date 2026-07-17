@@ -994,6 +994,17 @@ img { display: block; }
 }
 
 /* ── Downloads ───────────────────────────── */
+.image-container {
+    width: 100%;      /* The container spans the screen */
+    max-width: 400px; /* Force the image to never exceed 400px wide */
+    margin: 0 auto;   /* Centers the container */
+}
+
+.image-container img {
+    width: 100%;      /* The image fills the container */
+    height: auto;     /* Maintains aspect ratio */
+    display: block;
+}
 .download-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .download-card {
   display: flex; flex-direction: column; gap: 10px;
